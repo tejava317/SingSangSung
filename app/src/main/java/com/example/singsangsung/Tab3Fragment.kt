@@ -7,15 +7,13 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-public class Tab3Fragment extends Fragment {
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+class Tab3Fragment : Fragment() {
+    override fun onCreateView(inflater : LayoutInflater , container : ViewGroup? , savedInstanceState: Bundle?) : View {
         return inflater.inflate(R.layout.tab_layout3, container, false);
     }
 
     // 왜 R만 써도 인식되는건지 확인
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState){
+    override fun onViewCreated(view:View, savedInstanceState:Bundle?){
         super.onViewCreated(view, savedInstanceState);
     }
 }
