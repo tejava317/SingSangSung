@@ -49,4 +49,8 @@ dependencies {
     implementation ("com.google.android.material:material:1.6.1") // 최신 버전 확인 필요
     implementation ("androidx.viewpager2:viewpager2:1.0.0")
     implementation ("androidx.fragment:fragment:1.4.1")
+
+    // Image load library
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
 }
