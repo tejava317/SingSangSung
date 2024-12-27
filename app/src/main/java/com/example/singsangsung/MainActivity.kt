@@ -1,4 +1,4 @@
-tpackage com.example.singsangsung
+package com.example.singsangsung
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
