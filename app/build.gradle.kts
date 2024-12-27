@@ -44,4 +44,9 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+
+    // tab layout
+    implementation ("com.google.android.material:material:1.6.1") // 최신 버전 확인 필요
+    implementation ("androidx.viewpager2:viewpager2:1.0.0")
+    implementation ("androidx.fragment:fragment:1.4.1")
 }
