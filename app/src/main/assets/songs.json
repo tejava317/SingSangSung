@@ -1,0 +1,64 @@
+{
+  "songs": [
+    {
+      "title": "NO PAIN",
+      "artist": "실리카겔",
+      "duration": "3:39",
+      "image_url": "https://image.bugsm.co.kr/album/images/200/40790/4079061.jpg?version=20240901001656.0"
+    },
+    {
+      "title": "섬 (Queen Of Diamonds)",
+      "artist": "검정치마",
+      "duration": "4:47",
+      "image_url": "https://image.bugsm.co.kr/album/images/200/202288/20228859.jpg?version=20210428040418.0"
+    },
+    {
+      "title": "물고기",
+      "artist": "백예린",
+      "duration": "3:47",
+      "image_url": "https://image.bugsm.co.kr/album/images/200/204696/20469610.jpg?version=20240601000639.0"
+    },
+    {
+      "title": "Love me or Leave me",
+      "artist": "DAY6",
+      "duration": "3:42",
+      "image_url": "https://image.bugsm.co.kr/album/images/200/203237/20323788.jpg?version=20241114011724.0"
+    },
+    {
+      "title": "우주의 여름",
+      "artist": "라쿠나",
+      "duration": "3:37",
+      "image_url": "https://image.bugsm.co.kr/album/images/200/205853/20585310.jpg?version=20231026071345.0"
+    },
+    {
+      "title": "Hurt Again",
+      "artist": "Julia Michaels",
+      "duration": "3:22",
+      "image_url": "https://image.bugsm.co.kr/album/images/200/8997/899702.jpg?version=20220618015619.0"
+    },
+    {
+      "title": "Put a Light on Me",
+      "artist": "Sam Ryder",
+      "duration": "3:05",
+      "image_url": "https://image.bugsm.co.kr/album/images/200/302895/30289513.jpg?version=20240314052016.0"
+    },
+    {
+      "title": "Never Not",
+      "artist": "Lauv",
+      "duration": "3:01",
+      "image_url": "https://image.bugsm.co.kr/album/images/200/8011/801190.jpg?version=20241030010048.0"
+    },
+    {
+      "title": "Seven Nation Army",
+      "artist": "The White Stripes",
+      "duration": "3:52",
+      "image_url": "https://image.bugsm.co.kr/album/images/200/146998/14699837.jpg?version=20241225024902.0"
+    },
+    {
+      "title": "I Just Wanted You",
+      "artist": "Openside",
+      "duration": "3:34",
+      "image_url": "https://image.bugsm.co.kr/album/images/200/8756/875669.jpg?version=20190425004544.0"
+    }
+  ]
+}
