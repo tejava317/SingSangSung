@@ -17,7 +17,7 @@ class Tab3Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // FrameLayout 클릭 리스너 추가
-        val frameLayout = view.findViewById<FrameLayout>(R.id.tab3_main_button)
+        val frameLayout = view.findViewById<FrameLayout>(R.id.tab3_start_button)
         frameLayout.setOnClickListener {
             // BottomSheetFragment 표시
             val bottomSheet = Tab3BottomSheetFragment()

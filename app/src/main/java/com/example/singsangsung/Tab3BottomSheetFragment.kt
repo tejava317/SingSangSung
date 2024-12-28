@@ -20,13 +20,13 @@ class Tab3BottomSheetFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 닫기 버튼
-        val closeButton = view.findViewById<Button>(R.id.closeButton)
+        // '닫기' 버튼
+        val closeButton = view.findViewById<Button>(R.id.bottomSheetCloseButton)
         closeButton.setOnClickListener {
             dismiss() // Bottom Sheet 닫기
         }
 
-        // "My Playlist로 이동" 버튼
+        // 'My Playlist로 이동' 버튼
         val myPlaylistButton = view.findViewById<Button>(R.id.myPlaylistButton)
         myPlaylistButton.setOnClickListener {
             // ViewPager2의 두 번째 탭으로 이동
