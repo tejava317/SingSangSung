@@ -20,7 +20,7 @@ class PlaylistAdapter(
 
         init {
             view.setOnClickListener {
-                onItemClick(playlist[adapterPosition])
+                onItemClick(playlist[adapterPosition]) // 클릭된 Playlist 객체 전달
             }
         }
     }
@@ -41,4 +41,3 @@ class PlaylistAdapter(
 
     override fun getItemCount() = playlist.size
 }
-

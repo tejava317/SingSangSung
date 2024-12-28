@@ -32,9 +32,9 @@ class Tab3BottomSheetFragment : BottomSheetDialogFragment() {
         val playlists = loadPlaylistsFromAssets() // JSON 데이터 로드
         val recyclerView: RecyclerView = view.findViewById(R.id.tab3PlaylistRecyclerView)
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+
         recyclerView.adapter = PlaylistAdapter(playlists) { playlist ->
-            // 이미지를 클릭했을 때 빈 화면으로 이동
-            navigateToCustomScreen()
+            navigateToCustomScreen(playlist) // 클릭된 Playlist 객체 전달
         }
     }
 
@@ -66,8 +66,11 @@ class Tab3BottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     // 빈 화면으로 이동
-    private fun navigateToCustomScreen() {
-        val intent = Intent(requireContext(), Tab3CustomActivity::class.java)
+    private fun navigateToCustomScreen(playlist: Playlist) {
+        val intent = Intent(requireContext(), Tab3CustomActivity::class.java).apply {
+            putExtra("playlist_name", playlist.name)
+            putExtra("playlist_image", playlist.imageUrl)
+        }
         startActivity(intent)
         dismiss() // Bottom Sheet 닫기
     }
