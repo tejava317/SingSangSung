@@ -1,119 +1,139 @@
 [
   {
+    "id": 1,
     "title": "NO PAIN",
     "artist": "실리카겔",
     "duration": "3:39",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/40790/4079061.jpg"
   },
   {
+    "id": 2,
     "title": "섬 (Queen Of Diamonds)",
     "artist": "검정치마",
     "duration": "4:47",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/202288/20228859.jpg"
   },
   {
+    "id": 3,
     "title": "물고기",
     "artist": "백예린",
     "duration": "3:47",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/204696/20469610.jpg"
   },
   {
+    "id": 4,
     "title": "Find Me!",
     "artist": "The Poles",
     "duration": "3:46",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/204290/20429020.jpg"
   },
   {
+    "id": 5,
     "title": "우주의 여름",
     "artist": "라쿠나",
     "duration": "3:37",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/205853/20585310.jpg"
   },
   {
+    "id": 6,
     "title": "Hurt Again",
     "artist": "Julia Michaels",
     "duration": "3:22",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/8997/899702.jpg"
   },
   {
+    "id": 7,
     "title": "Put a Light on Me",
     "artist": "Sam Ryder",
     "duration": "3:05",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/302895/30289513.jpg"
   },
   {
+    "id": 8,
     "title": "Never Not",
     "artist": "Lauv",
     "duration": "3:01",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/8011/801190.jpg"
   },
   {
+    "id": 9,
     "title": "Seven Nation Army",
     "artist": "The White Stripes",
     "duration": "3:52",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/146998/14699837.jpg"
   },
   {
+    "id": 10,
     "title": "I Just Wanted You",
     "artist": "Openside",
     "duration": "3:34",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/8756/875669.jpg"
   },
   {
+    "id": 11,
     "title": "Island",
     "artist": "WINNER",
     "duration": "3:27",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/201119/20111926.jpg"
   },
   {
+    "id": 12,
     "title": "Circles",
     "artist": "ASTRO(아스트로)",
     "duration": "4:00",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/40964/4096483.jpg"
   },
   {
+    "id": 13,
     "title": "3am",
     "artist": "로제",
     "duration": "2:34",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/41113/4111311.jpg"
   },
   {
+    "id": 14,
     "title": "녹아내려요",
     "artist": "DAY6",
     "duration": "2:45",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/206680/20668087.jpg"
   },
   {
+    "id": 15,
     "title": "Flying Kiss",
     "artist": "NCT DREAM",
     "duration": "3:19",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/41096/4109604.jpg"
   },
   {
+    "id": 16,
     "title": "마음을 드려요",
     "artist": "아이유",
     "duration": "4:40",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/203063/20306376.jpg"
   },
   {
+    "id": 17,
     "title": "GIRLFRIEND",
     "artist": "BIGBANG",
     "duration": "3:48",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/200716/20071604.jpg"
   },
   {
+    "id": 18,
     "title": "뜨거웠던가요",
     "artist": "강승윤",
     "duration": "3:44",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/203874/20387418.jpg"
   },
   {
+    "id": 19,
     "title": "You Are the Music in Me",
-    "artist": "Troy,Gabriella,Disney",
+    "artist": "Troy, Gabriella, Disney",
     "duration": "3:27",
     "image_url": "https://image.bugsm.co.kr/album/images/1000/1125/112524.jpg"
   },
   {
+    "id": 20,
     "title": "MILLIONS",
     "artist": "WINNER",
     "duration": "3:28",
