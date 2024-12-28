@@ -10,7 +10,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 class MainActivity : AppCompatActivity() {
 
     private lateinit var tabLayout: TabLayout
-    private lateinit var viewPager: ViewPager2
+    lateinit var viewPager: ViewPager2
     private lateinit var adapter: ViewPagerAdapter
 
     @SuppressLint("MissingInflatedId")
