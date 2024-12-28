@@ -70,6 +70,7 @@ class Tab3BottomSheetFragment : BottomSheetDialogFragment() {
         val intent = Intent(requireContext(), Tab3CustomActivity::class.java).apply {
             putExtra("playlist_name", playlist.name)
             putExtra("playlist_image", playlist.imageUrl)
+            putIntegerArrayListExtra("playlist_songs", ArrayList(playlist.songs))
         }
         startActivity(intent)
         dismiss() // Bottom Sheet 닫기
