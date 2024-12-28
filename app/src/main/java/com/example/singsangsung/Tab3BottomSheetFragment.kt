@@ -21,7 +21,7 @@ class Tab3BottomSheetFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // '닫기' 버튼
-        val closeButton = view.findViewById<Button>(R.id.bottomSheetCloseButton)
+        val closeButton = view.findViewById<Button>(R.id.closeButton)
         closeButton.setOnClickListener {
             dismiss() // Bottom Sheet 닫기
         }
