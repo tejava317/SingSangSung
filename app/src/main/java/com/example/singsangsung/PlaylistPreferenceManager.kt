@@ -2,6 +2,7 @@ package com.example.singsangsung
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 class PlaylistPreferenceManager(context: Context) {
@@ -33,13 +34,19 @@ class PlaylistPreferenceManager(context: Context) {
     // 📌 모든 플레이리스트 불러오기
     fun getPlaylists(): List<Playlist> {
         val json = prefs.getString(PLAYLIST_KEY, null)
-        return if (json != null) {
-            val type = object : TypeToken<List<Playlist>>() {}.type
-            gson.fromJson(json, type)
-        } else {
+        return try {
+            if (json != null) {
+                val type = object : TypeToken<List<Playlist>>() {}.type
+                gson.fromJson(json, type) ?: emptyList()
+            } else {
+                emptyList()
+            }
+        } catch (e: Exception) {
+            Log.e("PlaylistPref", "Failed to parse playlists: ${e.message}")
             emptyList()
         }
     }
+
 
     // 📌 특정 플레이리스트 삭제
     fun removePlaylist(index: Int) {

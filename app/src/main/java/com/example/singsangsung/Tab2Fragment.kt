@@ -48,15 +48,14 @@ class Tab2Fragment : Fragment() {
      * RecyclerView 설정
      */
     private fun setupRecyclerView() {
-        playlists.clear()
         playlists.addAll(prefs.getPlaylists())
-
         gridAdapter = GridRecyclerAdapter(playlists)
         recyclerView.apply {
             layoutManager = GridLayoutManager(requireContext(), 2) // 2열 GridLayout
             adapter = gridAdapter
         }
     }
+
 //    private fun setupRecyclerView() {
 //        playlists.clear()
 //        playlists.addAll(prefs.getPlaylists())
@@ -120,8 +119,7 @@ class Tab2Fragment : Fragment() {
     private fun refreshRecyclerView() {
         playlists.clear()
         playlists.addAll(prefs.getPlaylists())
-        playlistAdapter.notifyDataSetChanged()
-        //updateEmptyMessageVisibility()
+        gridAdapter.notifyDataSetChanged()
     }
 
     override fun onResume() {
