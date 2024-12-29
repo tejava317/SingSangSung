@@ -64,11 +64,12 @@ class PlaylistDialogFragment : DialogFragment() {
             if (name.isNotEmpty()) {
                 val bitmap = (playlistImage.drawable as? BitmapDrawable)?.bitmap
                 val imageName = bitmap?.let { imagePreferenceManager.saveImage(it) } ?: ""
+                Log.d("heeju, image path", imagePreferenceManager.getImageFile(imageName).absolutePath)
 
                 manager.addPlaylist(
                     Playlist(0, name, imageName)
                 )
-                Toast.makeText(requireContext(), "플레이리스트가 추가되었습니다!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "플레이리스트가 추가되었습니다! ${name} and ${manager.getPlaylists().get(0).imageName}", Toast.LENGTH_SHORT).show()
                 dismiss()
             } else {
                 playlistName.error = "이름을 입력해주세요!"
@@ -76,70 +77,23 @@ class PlaylistDialogFragment : DialogFragment() {
         }
     }
 
-    /**
-     * 이미지 선택 다이얼로그
-     */
     private fun showImagePickerDialog() {
         val options = arrayOf("갤러리에서 선택", "사진 촬영")
         android.app.AlertDialog.Builder(requireContext())
             .setTitle("이미지 선택")
             .setItems(options) { _, which ->
                 when (which) {
-                    0 -> checkPermissionAndOpenGallery()
-                    1 -> checkPermissionAndOpenCamera()
+                    0 -> openGallery()
+                    1 -> openCamera()
                 }
             }.show()
     }
 
-    /**
-     * 권한 확인 및 갤러리 열기
-     */
-    private fun checkPermissionAndOpenGallery() {
-        if (ContextCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                requireActivity(),
-                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                REQUEST_PERMISSION
-            )
-        } else {
-            openGallery()
-        }
-    }
-
-    /**
-     * 권한 확인 및 카메라 열기
-     */
-    private fun checkPermissionAndOpenCamera() {
-        if (ContextCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.CAMERA
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                requireActivity(),
-                arrayOf(Manifest.permission.CAMERA),
-                REQUEST_PERMISSION
-            )
-        } else {
-            openCamera()
-        }
-    }
-
-    /**
-     * 갤러리 열기
-     */
     private fun openGallery() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(intent, REQUEST_GALLERY)
     }
 
-    /**
-     * 카메라 열기
-     */
     private fun openCamera() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         startActivityForResult(intent, REQUEST_CAMERA)
@@ -160,7 +114,6 @@ class PlaylistDialogFragment : DialogFragment() {
             }
         }
     }
-
     override fun onStart() {
         super.onStart()
         dialog?.window?.apply {
@@ -189,7 +142,94 @@ class PlaylistDialogFragment : DialogFragment() {
         super.dismiss()
         onDismissListener?.onDismiss()
     }
+
 }
+    /**
+     * 이미지 선택 다이얼로그
+     */
+//    private fun showImagePickerDialog() {
+//        val options = arrayOf("갤러리에서 선택", "사진 촬영")
+//        android.app.AlertDialog.Builder(requireContext())
+//            .setTitle("이미지 선택")
+//            .setItems(options) { _, which ->
+//                when (which) {
+//                    0 -> checkPermissionAndOpenGallery()
+//                    1 -> checkPermissionAndOpenCamera()
+//                }
+//            }.show()
+//    }
+//
+//    /**
+//     * 권한 확인 및 갤러리 열기
+//     */
+//    private fun checkPermissionAndOpenGallery() {
+//        if (ContextCompat.checkSelfPermission(
+//                requireContext(),
+//                Manifest.permission.READ_EXTERNAL_STORAGE
+//            ) != PackageManager.PERMISSION_GRANTED
+//        ) {
+//            ActivityCompat.requestPermissions(
+//                requireActivity(),
+//                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+//                REQUEST_PERMISSION
+//            )
+//        } else {
+//            openGallery()
+//        }
+//    }
+//
+//    /**
+//     * 권한 확인 및 카메라 열기
+//     */
+//    private fun checkPermissionAndOpenCamera() {
+//        if (ContextCompat.checkSelfPermission(
+//                requireContext(),
+//                Manifest.permission.CAMERA
+//            ) != PackageManager.PERMISSION_GRANTED
+//        ) {
+//            ActivityCompat.requestPermissions(
+//                requireActivity(),
+//                arrayOf(Manifest.permission.CAMERA),
+//                REQUEST_PERMISSION
+//            )
+//        } else {
+//            openCamera()
+//        }
+//    }
+//
+//    /**
+//     * 갤러리 열기
+//     */
+//    private fun openGallery() {
+//        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+//        startActivityForResult(intent, REQUEST_GALLERY)
+//    }
+//
+//    /**
+//     * 카메라 열기
+//     */
+//    private fun openCamera() {
+//        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+//        startActivityForResult(intent, REQUEST_CAMERA)
+//    }
+//
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (resultCode == Activity.RESULT_OK) {
+//            when (requestCode) {
+//                REQUEST_GALLERY -> {
+//                    imageUri = data?.data
+//                    playlistImage.setImageURI(imageUri)
+//                }
+//                REQUEST_CAMERA -> {
+//                    imageBitmap = data?.extras?.get("data") as Bitmap
+//                    playlistImage.setImageBitmap(imageBitmap)
+//                }
+//            }
+//        }
+//    }
+
+
 
 //package com.example.singsangsung
 //

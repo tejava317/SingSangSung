@@ -1,6 +1,7 @@
 package com.example.singsangsung
 
 import android.annotation.SuppressLint
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
@@ -12,11 +13,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
     private lateinit var adapter: ViewPagerAdapter
+    //private lateinit var prefs : PlaylistPreferenceManager
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.tab_layout_main)
+        //clearSharedPreferences(this)
 
         // 초기화
         tabLayout = findViewById(R.id.tabLayout)
@@ -35,4 +38,8 @@ class MainActivity : AppCompatActivity() {
             }
         }.attach()
     }
+//    fun clearSharedPreferences(context: Context) {
+//        val prefs = context.getSharedPreferences("playlist_prefs", Context.MODE_PRIVATE)
+//        prefs.edit().clear().apply()
+//    }
 }

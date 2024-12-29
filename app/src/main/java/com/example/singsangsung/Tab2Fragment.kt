@@ -1,5 +1,6 @@
 package com.example.singsangsung
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,20 +20,26 @@ class Tab2Fragment : Fragment() {
     private lateinit var playlistAdapter: PlaylistAdapter
     private val playlists = mutableListOf<Playlist>()
     private lateinit var gridAdapter : GridRecyclerAdapter
-
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        Log.d("Tab2Fragment", "onAttach 호출됨")
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        Log.d("Tab2Fragment", "onCreateView 호출됨")
         return inflater.inflate(R.layout.tab_layout2, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.d("heeju", "recycler view start--")
         super.onViewCreated(view, savedInstanceState)
 
         prefs = PlaylistPreferenceManager(requireContext())
         recyclerView = view.findViewById(R.id.recyclerView)
+
 
 
         setupRecyclerView()
@@ -44,17 +51,30 @@ class Tab2Fragment : Fragment() {
         }
     }
 
+
     /**
      * RecyclerView 설정
      */
     private fun setupRecyclerView() {
+        Log.d("heeju", "recycler view start")
         playlists.addAll(prefs.getPlaylists())
         gridAdapter = GridRecyclerAdapter(playlists)
+        Log.d("heeju", "recycler view start2")
+        Log.d("Tab2Fragment", "Playlists loaded: ${playlists.size}")
+
+        Log.d("Tab2Fragment", "Playlists loaded: ${playlists.size}") // 로그로 확인
+
+        if (playlists.isEmpty()) {
+            Log.e("Tab2Fragment", "Playlists is empty after loading from prefs!")
+        }
+
         recyclerView.apply {
             layoutManager = GridLayoutManager(requireContext(), 2) // 2열 GridLayout
             adapter = gridAdapter
         }
     }
+
+
 
 //    private fun setupRecyclerView() {
 //        playlists.clear()
