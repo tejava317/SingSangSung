@@ -45,34 +45,3 @@ class GridRecyclerAdapter(
 
     override fun getItemCount(): Int = items.size
 }
-
-//class GridRecyclerAdapter(
-//    private val items: List<Playlist>
-//) : RecyclerView.Adapter<GridRecyclerAdapter.ViewHolder>() {
-//
-//    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//        val imageView: ImageView = itemView.findViewById(R.id.item_image)
-//        val textView: TextView = itemView.findViewById(R.id.item_name)
-//    }
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-//        val view = LayoutInflater.from(parent.context)
-//            .inflate(R.layout.tab2_playlist_element, parent, false)
-//        return ViewHolder(view)
-//    }
-//
-//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        val item = items[position]
-//        holder.textView.text = item.name
-//
-//        val imageFile = File(holder.itemView.context.filesDir, item.imageName)
-//        if (imageFile.exists()) {
-//            val bitmap = BitmapFactory.decodeFile(imageFile.absolutePath)
-//            holder.imageView.setImageBitmap(bitmap)
-//        } else {
-//            holder.imageView.setImageResource(android.R.color.darker_gray)
-//        }
-//    }
-//
-//    override fun getItemCount(): Int = items.size
-//}

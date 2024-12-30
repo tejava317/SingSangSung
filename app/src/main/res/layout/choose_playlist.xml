@@ -3,19 +3,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:gravity="center_vertical">
 
     <CheckBox
-            android:id="@+id/item_checkbox"
+            android:id="@+id/music_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select Item" />
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_marginEnd="8dp" />
 
     <TextView
-            android:id="@+id/item_text"
-            android:layout_width="wrap_content"
+            android:id="@+id/music_name"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Item Name"
-            android:textSize="16sp" />
+            android:layout_weight="1"/>
+
 </LinearLayout>
