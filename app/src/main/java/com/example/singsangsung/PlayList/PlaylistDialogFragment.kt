@@ -1,4 +1,4 @@
-package com.example.singsangsung
+package com.example.singsangsung.PlayList
 
 import android.app.Activity
 import android.content.Intent
@@ -7,14 +7,11 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.*
 import android.widget.*
-import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
-import android.Manifest
-import android.content.pm.PackageManager
-import androidx.core.content.ContextCompat
+import com.example.singsangsung.Playlist
+import com.example.singsangsung.R
 
 class PlaylistDialogFragment : DialogFragment() {
 
@@ -76,24 +73,6 @@ class PlaylistDialogFragment : DialogFragment() {
                 playlistName.error = "이름을 입력해주세요!"
             }
         }
-
-        // 최종 추가 버튼 클릭
-//        addButton.setOnClickListener {
-//            val name = playlistName.text.toString().trim()
-//            if (name.isNotEmpty()) {
-//                val bitmap = (playlistImage.drawable as? BitmapDrawable)?.bitmap
-//                val imageName = bitmap?.let { imagePreferenceManager.saveImage(it) } ?: ""
-//                Log.d("heeju, image path", imagePreferenceManager.getImageFile(imageName).absolutePath)
-//
-//                manager.addPlaylist(
-//                    Playlist(0, name, imageName)
-//                )
-//                Toast.makeText(requireContext(), "플레이리스트가 추가되었습니다! ${name} and ${manager.getPlaylists().get(0).imageName}", Toast.LENGTH_SHORT).show()
-//                dismiss()
-//            } else {
-//                playlistName.error = "이름을 입력해주세요!"
-//            }
-//        }
     }
 
     private fun showImagePickerDialog() {
