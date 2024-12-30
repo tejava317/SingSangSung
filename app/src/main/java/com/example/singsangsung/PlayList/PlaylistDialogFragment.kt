@@ -81,24 +81,14 @@ class PlaylistDialogFragment : DialogFragment() {
         // 플레이리스트에 넣을 노래 추가 다이얼로그 띄우기 : 성공
         songBtn.setOnClickListener {
             val musicDialog = PlaylistMusicFragment()
-//            musicDialog.onSongsSelected = { selectedIds ->
-//                musicList = selectedIds
-//                Toast.makeText(requireContext(), "선택된 ID: $selectedIds", Toast.LENGTH_SHORT).show()
-//            }
+            musicDialog.onSongsSelected = { selectedIds ->
+                musicList = selectedIds
+                Toast.makeText(requireContext(), "선택된 음악 ID: $selectedIds", Toast.LENGTH_SHORT).show()
+            }
             musicDialog.show(parentFragmentManager, "PlaylistMusicDialog")
         }
     }
-    // 플레이리스트 추가할때 화면 띄우기
-//    private fun openPlaylistMusicDialog(){
-//
-//            // 음악체크화면이 닫혔을때 발생할 이벤트 - onDismissListener : 다이얼로그가 닫힐때 호출되는 인터페이스
-//            checkResult.setOnDismissListener(object : PlaylistMusicFragment.OnDismissListener {
-//            override fun onDismiss() {
-//                // musiclist에 추가
-//                musicList.
-//            }
-//        })
-//    }
+
 
     // 이미지 올릴때 갤러리에서 가져오기 팝업
     private fun showImagePickerDialog() {

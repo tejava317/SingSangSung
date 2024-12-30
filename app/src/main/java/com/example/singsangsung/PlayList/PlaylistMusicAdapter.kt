@@ -32,7 +32,7 @@ class PlaylistMusicAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         holder.textView.text = "${item.title} - ${item.artist}"
-        holder.checkBox.isChecked = item.isChecked
+        //holder.checkBox.isChecked = item.isChecked
 
         // 체크박스 상태 변경 리스너
         holder.checkBox.setOnCheckedChangeListener(null) // 리스너 초기화
@@ -56,7 +56,7 @@ class PlaylistMusicAdapter(
 
     // 선택된 ID 반환
     fun getSelectedIds(): List<Int> {
-        return selectedIds.toList()
+        return items.filter { it.isChecked }.map { it.id }
     }
 }
 
