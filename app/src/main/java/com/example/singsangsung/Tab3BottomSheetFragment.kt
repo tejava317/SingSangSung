@@ -67,6 +67,7 @@ class Tab3BottomSheetFragment : BottomSheetDialogFragment() {
     private fun navigateToCustomScreen(playlist: Playlist) {
         val intent = Intent(requireContext(), Tab3CustomActivity::class.java).apply {
             putExtra("playlist_name", playlist.name)
+
             putExtra("playlist_image", playlist.imageName)
             putIntegerArrayListExtra("playlist_songs", ArrayList(playlist.checkedMusic))
         }
