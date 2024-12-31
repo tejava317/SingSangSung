@@ -39,13 +39,13 @@ class Tab1Fragment : Fragment() {
 
             for (i in 0 until jsonArray.length()) {
                 val jsonObject = jsonArray.getJSONObject(i)
-                val id = jsonObject.getString("id").toInt()
+                val id = jsonObject.getInt("id")
+
                 val title = jsonObject.getString("title")
                 val artist = jsonObject.getString("artist")
                 val duration = jsonObject.getString("duration")
                 val imageUrl = jsonObject.getString("image_url")
-
-                songs.add(Song(id,title, artist, duration, imageUrl))
+                songs.add(Song(id, title, artist, duration, imageUrl))
             }
         } catch (e: Exception) {
             e.printStackTrace()
