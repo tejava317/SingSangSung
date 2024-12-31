@@ -217,7 +217,7 @@ class Tab3CustomActivity : AppCompatActivity() {
             songArtistDurationTextViews[i].text = "${song.artist} · ${song.duration}"
         }
 
-        val bitmap = createBitmapFromLayout(exportLayout)
+        val bitmap = createBitmapFromCroppedLayout(exportLayout)
 
         saveImageToGallery(bitmap)
 
@@ -226,18 +226,26 @@ class Tab3CustomActivity : AppCompatActivity() {
         showConvertDialog(bitmap)
     }
 
-    private fun createBitmapFromLayout(view: View): Bitmap {
+    private fun createBitmapFromCroppedLayout(view: View): Bitmap {
+        // 전체 레이아웃 크기 측정 및 비트맵 생성
         view.measure(
             View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
             View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
         )
         view.layout(0, 0, view.measuredWidth, view.measuredHeight)
 
-        val bitmap = Bitmap.createBitmap(view.measuredWidth, view.measuredHeight, Bitmap.Config.ARGB_8888)
-        val canvas = Canvas(bitmap)
+        val fullBitmap = Bitmap.createBitmap(view.measuredWidth, view.measuredHeight, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(fullBitmap)
         view.draw(canvas)
 
-        return bitmap
+        // 크롭할 영역의 크기 설정
+        val cropWidth = dpToPx(324) // 324dp -> 픽셀 변환
+        val cropHeight = dpToPx(576) // 576dp -> 픽셀 변환
+        val cropStartX = 0 // 왼쪽 상단 X 좌표
+        val cropStartY = 0 // 왼쪽 상단 Y 좌표
+
+        // 크롭된 비트맵 생성
+        return Bitmap.createBitmap(fullBitmap, cropStartX, cropStartY, cropWidth, cropHeight)
     }
 
     private fun saveImageToGallery(bitmap: Bitmap) {
@@ -267,6 +275,11 @@ class Tab3CustomActivity : AppCompatActivity() {
                 outputStream?.close()
             }
         }
+    }
+
+    private fun dpToPx(dp: Int): Int {
+        val density = resources.displayMetrics.density
+        return (dp * density).toInt()
     }
 
     private fun showConvertDialog(bitmap: Bitmap) {
