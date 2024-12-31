@@ -1,4 +1,4 @@
-package com.example.singsangsung.PlayList
+package com.example.singsangsung.model.PlayList
 
 import android.app.Activity
 import android.content.Intent
@@ -10,8 +10,11 @@ import android.provider.MediaStore
 import android.view.*
 import android.widget.*
 import androidx.fragment.app.DialogFragment
-import com.example.singsangsung.Playlist
+import com.example.singsangsung.PlayList.ImagePreferenceManager
+import com.example.singsangsung.PlayList.PlaylistMusicFragment
+import com.example.singsangsung.PlayList.PlaylistPreferenceManager
 import com.example.singsangsung.R
+import com.example.singsangsung.model.Playlist
 
 class PlaylistDialogFragment : DialogFragment() {
 
