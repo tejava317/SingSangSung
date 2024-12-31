@@ -228,7 +228,6 @@ class Tab3CustomActivity : AppCompatActivity() {
         saveImageToGallery(bitmap)
 
         // 5. 다이얼로그에 저장된 이미지 불러오기
-        Thread.sleep(1000)
         showConvertDialog(bitmap)
     }
 
