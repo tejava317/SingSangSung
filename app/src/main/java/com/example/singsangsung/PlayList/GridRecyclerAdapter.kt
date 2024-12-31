@@ -9,8 +9,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.singsangsung.Playlist
 import com.example.singsangsung.R
+import com.example.singsangsung.model.Playlist
 import java.io.File
 class GridRecyclerAdapter(
     private val items: List<Playlist>,
