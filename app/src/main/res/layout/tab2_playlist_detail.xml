@@ -93,27 +93,15 @@
             app:layout_constraintVertical_bias="0.099" />
 
 
-
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/playlistRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="8dp" />
+            android:padding="8dp"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="0dp" />
 
-    <TextView
-            android:id="@+id/tab2_songName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ddddddddddddddddddddddddddddddddddddddddd"
-            tools:layout_editor_absoluteY="503dp"
-            tools:layout_editor_absoluteX="29dp" />
 
-    <TextView
-            android:id="@+id/tab2_song_artist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="dddddddddddddddddddddd"
-            tools:layout_editor_absoluteY="554dp"
-            tools:layout_editor_absoluteX="50dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

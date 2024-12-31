@@ -1,6 +1,7 @@
 package com.example.singsangsung
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.singsangsung.model.Playlist
 import com.example.singsangsung.PlayList.GridRecyclerAdapter
+import com.example.singsangsung.PlayList.PlaylistDetailActivityPage
 import com.example.singsangsung.PlayList.PlaylistPreferenceManager
 import com.example.singsangsung.model.PlayList.PlaylistDialogFragment
 import com.example.singsangsung.PlayList.PlaylistDetailFragmentPage
@@ -22,11 +24,12 @@ class Tab2Fragment : Fragment() {
     private lateinit var prefs: PlaylistPreferenceManager
     private lateinit var recyclerView: RecyclerView
     private val playlists = mutableListOf<Playlist>()
-    private lateinit var gridAdapter : GridRecyclerAdapter
+    private lateinit var gridAdapter: GridRecyclerAdapter
     override fun onAttach(context: Context) {
         super.onAttach(context)
         Log.d("Tab2Fragment", "onAttach 호출됨")
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,11 +46,8 @@ class Tab2Fragment : Fragment() {
         prefs = PlaylistPreferenceManager(requireContext())
         recyclerView = view.findViewById(R.id.recyclerView)
 
-
-
         setupRecyclerView()
         loadPlaylists()
-
 
         val addButton: Button = view.findViewById(R.id.add_playlist)
         addButton.setOnClickListener {
@@ -58,8 +58,8 @@ class Tab2Fragment : Fragment() {
 
     // 📌 RecyclerView 초기화
     private fun setupRecyclerView() {
-        gridAdapter = GridRecyclerAdapter(playlists) {
-            playlist -> onPlaylistItemClicked(playlist)
+        gridAdapter = GridRecyclerAdapter(playlists) { playlist ->
+            onPlaylistItemClicked(playlist)
         }
         recyclerView.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
@@ -68,23 +68,23 @@ class Tab2Fragment : Fragment() {
     }
 
     // 클릭했을때 디테일 페이지로 이동하는 코드
-    private fun onPlaylistItemClicked(playlist: Playlist) {
-        val detailFragment = PlaylistDetailFragmentPage().apply {
-            arguments = Bundle().apply {
-                putInt("playlistId", playlist.id)
-                putString("playlistName", playlist.name)
-                putString("playlistImage", playlist.imageName)
-            }
-        }
-        try {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.tab2_detailPage_container, detailFragment)
-                .addToBackStack(null)
-                .commit()
-        } catch (e: Exception) {
-            Log.e("Tab2Fragment Heeju Test detail page", "Fragment Transaction Failed: ${e.message}")
-        }
-    }
+//    private fun onPlaylistItemClicked(playlist: Playlist) {
+//        val detailFragment = PlaylistDetailFragmentPage().apply {
+//            arguments = Bundle().apply {
+//                putInt("playlistId", playlist.id)
+//                putString("playlistName", playlist.name)
+//                putString("playlistImage", playlist.imageName)
+//            }
+//        }
+//        try {
+//            parentFragmentManager.beginTransaction()
+//                .replace(R.id.tab2_detailPage_container, detailFragment)
+//                .addToBackStack(null)
+//                .commit()
+//        } catch (e: Exception) {
+//            Log.e("Tab2Fragment Heeju Test detail page", "Fragment Transaction Failed: ${e.message}")
+//        }
+//    }
 
     // 📌 플레이리스트 불러오기
     private fun loadPlaylists() {
@@ -108,4 +108,14 @@ class Tab2Fragment : Fragment() {
         super.onResume()
         loadPlaylists()
     }
+
+    private fun onPlaylistItemClicked(playlist: Playlist) {
+        val intent = Intent(requireContext(), PlaylistDetailActivityPage::class.java).apply {
+            putExtra("playlistId", playlist.id)
+            putExtra("playlistName", playlist.name)
+            putExtra("playlistImage", playlist.imageName)
+        }
+        startActivity(intent)
+    }
 }
+
