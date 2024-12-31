@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.singsangsung.PlayList.GridRecyclerAdapter
+import com.example.singsangsung.PlayList.PlaylistDetailFragmentPage
 import com.example.singsangsung.PlayList.PlaylistDialogFragment
 import com.example.singsangsung.PlayList.PlaylistPreferenceManager
 
@@ -56,10 +57,31 @@ class Tab2Fragment : Fragment() {
 
     // 📌 RecyclerView 초기화
     private fun setupRecyclerView() {
-        gridAdapter = GridRecyclerAdapter(playlists)
+        gridAdapter = GridRecyclerAdapter(playlists) {
+            playlist -> onPlaylistItemClicked(playlist)
+        }
         recyclerView.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = gridAdapter
+        }
+    }
+
+    // 클릭했을때 디테일 페이지로 이동하는 코드
+    private fun onPlaylistItemClicked(playlist: Playlist) {
+        val detailFragment = PlaylistDetailFragmentPage().apply {
+            arguments = Bundle().apply {
+                putInt("playlistId", playlist.id)
+                putString("playlistName", playlist.name)
+                putString("playlistImage", playlist.imageName)
+            }
+        }
+        try {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.tab2_detailPage_container, detailFragment)
+                .addToBackStack(null)
+                .commit()
+        } catch (e: Exception) {
+            Log.e("Tab2Fragment Heeju Test detail page", "Fragment Transaction Failed: ${e.message}")
         }
     }
 
