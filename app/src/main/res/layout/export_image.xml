@@ -1,6 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/export_frame"
+    android:layout_width="324dp"
+    android:layout_height="576dp"
+    android:clipToOutline="true"
+    android:background="#FFFFFF">
+
+    <!-- Background -->
+    <ImageView
+        android:id="@+id/export_background"
+        android:layout_width="576dp"
+        android:layout_height="576dp"
+        android:layout_marginStart="-126dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Playlist image -->
+    <ImageView
+        android:id="@+id/export_playlist_image"
+        android:layout_width="274dp"
+        android:layout_height="274dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="50dp"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Playlist title -->
+    <TextView
+        android:id="@+id/export_playlist_title"
+        android:layout_width="274dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="337dp"
+        android:textAppearance="@style/export_playlist_title"
+        android:gravity="top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Playlist description -->
+    <TextView
+        android:id="@+id/export_description"
+        android:layout_width="274dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="375dp"
+        android:textAppearance="@style/export_description"
+        android:gravity="top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Playlist: Song 1 -->
+    <ImageView
+        android:id="@+id/export_songs_image_1"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="404dp"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/export_songs_title_1"
+        android:layout_width="223dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="410dp"
+        android:textAppearance="@style/export_songs_title"
+        android:gravity="top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/export_songs_artist_duration_1"
+        android:layout_width="223dp"
+        android:layout_height="11dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="426dp"
+        android:textAppearance="@style/export_songs_artist_duration"
+        android:gravity="top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Playlist: Song 2 -->
+    <ImageView
+        android:id="@+id/export_songs_image_2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="454dp"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/export_songs_title_2"
+        android:layout_width="223dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="460dp"
+        android:textAppearance="@style/export_songs_title"
+        android:gravity="top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/export_songs_artist_duration_2"
+        android:layout_width="223dp"
+        android:layout_height="11dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="476dp"
+        android:textAppearance="@style/export_songs_artist_duration"
+        android:gravity="top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Playlist: Song 3 -->
+    <ImageView
+        android:id="@+id/export_songs_image_3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="504dp"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/export_songs_title_3"
+        android:layout_width="223dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="510dp"
+        android:textAppearance="@style/export_songs_title"
+        android:gravity="top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/export_songs_artist_duration_3"
+        android:layout_width="223dp"
+        android:layout_height="11dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="526dp"
+        android:textAppearance="@style/export_songs_artist_duration"
+        android:gravity="top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Watermark -->
+    <TextView
+        android:id="@+id/export_watermark"
+        android:layout_width="34dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="265dp"
+        android:layout_marginTop="31dp"
+        android:text="Playlist"
+        android:textAppearance="@style/export_watermark"
+        android:gravity="top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
