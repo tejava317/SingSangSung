@@ -16,7 +16,6 @@ import com.example.singsangsung.PlayList.GridRecyclerAdapter
 import com.example.singsangsung.PlayList.PlaylistDetailActivityPage
 import com.example.singsangsung.PlayList.PlaylistPreferenceManager
 import com.example.singsangsung.model.PlayList.PlaylistDialogFragment
-import com.example.singsangsung.PlayList.PlaylistDetailFragmentPage
 
 
 class Tab2Fragment : Fragment() {
@@ -67,25 +66,6 @@ class Tab2Fragment : Fragment() {
         }
     }
 
-    // 클릭했을때 디테일 페이지로 이동하는 코드
-//    private fun onPlaylistItemClicked(playlist: Playlist) {
-//        val detailFragment = PlaylistDetailFragmentPage().apply {
-//            arguments = Bundle().apply {
-//                putInt("playlistId", playlist.id)
-//                putString("playlistName", playlist.name)
-//                putString("playlistImage", playlist.imageName)
-//            }
-//        }
-//        try {
-//            parentFragmentManager.beginTransaction()
-//                .replace(R.id.tab2_detailPage_container, detailFragment)
-//                .addToBackStack(null)
-//                .commit()
-//        } catch (e: Exception) {
-//            Log.e("Tab2Fragment Heeju Test detail page", "Fragment Transaction Failed: ${e.message}")
-//        }
-//    }
-
     // 📌 플레이리스트 불러오기
     private fun loadPlaylists() {
         playlists.clear()
@@ -114,6 +94,7 @@ class Tab2Fragment : Fragment() {
             putExtra("playlistId", playlist.id)
             putExtra("playlistName", playlist.name)
             putExtra("playlistImage", playlist.imageName)
+            putIntegerArrayListExtra("playlistSongs", ArrayList(playlist.checkedMusic)) // Song ID 목록 전달
         }
         startActivity(intent)
     }
