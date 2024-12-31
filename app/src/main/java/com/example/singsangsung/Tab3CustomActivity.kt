@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.singsangsung.model.Song
 import org.json.JSONArray
+import java.io.File
 import java.io.OutputStream
 
 class Tab3CustomActivity : AppCompatActivity() {
@@ -35,7 +36,9 @@ class Tab3CustomActivity : AppCompatActivity() {
 
         // Intent로 전달된 데이터 받기
         val playlistName = intent.getStringExtra("playlist_name") ?: "플레이리스트 제목 없음"
-        val playlistImage = intent.getStringExtra("playlist_image")
+        val imagefile = intent.getStringExtra("playlist_image")
+        // playlist 파일명이 playlistImage임
+        val playlistImage = File(filesDir, imagefile)
         val playlistSongs = intent.getIntegerArrayListExtra("playlist_songs") ?: arrayListOf()
 
         // UI 요소 초기화
@@ -48,7 +51,7 @@ class Tab3CustomActivity : AppCompatActivity() {
         convertButton = findViewById(R.id.convertButton) // 변환 버튼 초기화
         convertButton.visibility = View.GONE // 초기 상태 숨김
 
-        // 플레이리스트 데이터 바인딩
+        // 플레이리스트 데이터 바인딩  : 여기서 이미지가 로드가 안 됨
         playlistTitleTextView.text = playlistName
         Glide.with(this).load(playlistImage).into(playlistImageView)
 

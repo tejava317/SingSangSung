@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.singsangsung.PlayList.PlaylistPreferenceManager
 import com.example.singsangsung.model.Playlist
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.json.JSONArray
 
 class Tab3BottomSheetFragment : BottomSheetDialogFragment() {
 
+    lateinit var manager : PlaylistPreferenceManager
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,7 +25,7 @@ class Tab3BottomSheetFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        manager = PlaylistPreferenceManager(requireContext())
         setupRecyclerView(view)
     }
 
@@ -42,22 +44,18 @@ class Tab3BottomSheetFragment : BottomSheetDialogFragment() {
     private fun loadPlaylistsFromAssets(): List<Playlist> {
         val playlists = mutableListOf<Playlist>()
         try {
-            val inputStream = requireContext().assets.open("playlist.json")
-            val jsonString = inputStream.bufferedReader().use { it.readText() }
-            val jsonArray = JSONArray(jsonString)
+            val playlistList = manager.getPlaylists()
+            for (playlist in playlistList) {
+                val id = playlist.id
+                val imageName = playlist.imageName
+                val title = playlist.name
+                val songs = playlist.checkedMusic
+//                val songList = mutableListOf<Int>()
+//                for (song in songs) {
+//                    songList.add(song)
+//                }
 
-            for (i in 0 until jsonArray.length()) {
-                val jsonObject = jsonArray.getJSONObject(i)
-                val imageUrl = jsonObject.getString("image_url")
-                val name = jsonObject.getString("name")
-                val songs = jsonObject.getJSONArray("songs")
-
-                val songList = mutableListOf<Int>()
-                for (j in 0 until songs.length()) {
-                    songList.add(songs.getInt(j))
-                }
-
-                playlists.add(Playlist(imageUrl, name, songList))
+                playlists.add(Playlist(id, title, imageName, songs))
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -69,8 +67,9 @@ class Tab3BottomSheetFragment : BottomSheetDialogFragment() {
     private fun navigateToCustomScreen(playlist: Playlist) {
         val intent = Intent(requireContext(), Tab3CustomActivity::class.java).apply {
             putExtra("playlist_name", playlist.name)
-            putExtra("playlist_image", playlist.imageUrl)
-            putIntegerArrayListExtra("playlist_songs", ArrayList(playlist.songs))
+
+            putExtra("playlist_image", playlist.imageName)
+            putIntegerArrayListExtra("playlist_songs", ArrayList(playlist.checkedMusic))
         }
         startActivity(intent)
         dismiss() // Bottom Sheet 닫기
