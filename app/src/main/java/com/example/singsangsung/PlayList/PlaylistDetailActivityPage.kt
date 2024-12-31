@@ -209,28 +209,8 @@ private fun updatePlaylistInfo() {
     }
 
 
-//    private fun loadSongs(songIds: List<Int>) {
-//        try {
-//            val inputStream = assets.open("songs.json")
-//            val jsonString = inputStream.bufferedReader().use { it.readText() }
-//            val jsonArray = JSONArray(jsonString)
-//
-//            for (i in 0 until jsonArray.length()) {
-//                val jsonObject = jsonArray.getJSONObject(i)
-//                val id = jsonObject.getInt("id")
-//                val title = jsonObject.getString("title")
-//                val artist = jsonObject.getString("artist")
-//                val duration = jsonObject.getString("duration")
-//                val imageUrl = jsonObject.getString("image_url")
-//
-//                if (id in songIds) {
-//                    selectedSongs.add(Song(id, title, artist, duration, imageUrl))
-//                }
-//            }
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
-//    }
+
+
     private fun loadSongs(songIds: List<Int>) {
         selectedSongs.clear()
         try {

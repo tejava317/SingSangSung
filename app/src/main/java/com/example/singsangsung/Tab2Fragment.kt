@@ -56,18 +56,6 @@ class Tab2Fragment : Fragment() {
         }
     }
 
-
-    // 📌 RecyclerView 초기화
-//    private fun setupRecyclerView() {
-//        gridAdapter = GridRecyclerAdapter(playlists) { playlist ->
-//            onPlaylistItemClicked(playlist)
-//        }
-//
-//        recyclerView.apply {
-//            layoutManager = GridLayoutManager(requireContext(), 2)
-//            adapter = gridAdapter
-//        }
-//    }
     private fun setupRecyclerView() {
         gridAdapter = GridRecyclerAdapter(playlists,
             onItemClick = { playlist -> onPlaylistItemClicked(playlist) },
