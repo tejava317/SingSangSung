@@ -14,7 +14,8 @@ import com.example.singsangsung.model.Playlist
 import java.io.File
 class GridRecyclerAdapter(
     private val items: List<Playlist>,
-    private val onItemClick : (Playlist) -> Unit  // 아 매개변수는 플리객체고 람다함수로 리턴되는??
+    private val onItemClick : (Playlist) -> Unit,
+    private val onItemLongClick: (Playlist) -> Unit// 아 매개변수는 플리객체고 람다함수로 리턴되는??
 ) : RecyclerView.Adapter<GridRecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -49,6 +50,11 @@ class GridRecyclerAdapter(
             // requireContext()는 fragment에서만 사용할 수 있음, 아래는 adapter와 viewHolder에서 사용하는 방법
             Toast.makeText(holder.itemView.context, "${item.name}이 선택되었습니다", Toast.LENGTH_SHORT).show()
 
+        }
+
+        holder.itemView.setOnLongClickListener {
+            onItemLongClick(item)
+            true
         }
     }
 
