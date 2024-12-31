@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.singsangsung.model.Playlist
+import java.io.File
 
 class PlaylistAdapter(
     private val playlist: List<Playlist>,
@@ -34,9 +35,12 @@ class PlaylistAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = playlist[position]
         holder.nameTextView.text = item.name
-        Glide.with(holder.itemView.context)
-            .load(item.imageUrl)
-            .into(holder.imageView)
+        val imageFile = File(holder.itemView.context.filesDir, item.imageName)
+        if (imageFile.exists()) {
+            Glide.with(holder.itemView.context)
+                .load(imageFile)
+                .into(holder.imageView)
+        }
     }
 
     override fun getItemCount() = playlist.size
