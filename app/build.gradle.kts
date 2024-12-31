@@ -56,4 +56,7 @@ dependencies {
 
     // gson
     implementation("com.google.code.gson:gson:2.10.1")
+
+    // Image blur
+    implementation("jp.wasabeef:glide-transformations:4.3.0")
 }

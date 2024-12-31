@@ -21,7 +21,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.singsangsung.model.Song
+import jp.wasabeef.glide.transformations.BlurTransformation
 import org.json.JSONArray
 import java.io.File
 import java.io.OutputStream
@@ -183,12 +185,16 @@ class Tab3CustomActivity : AppCompatActivity() {
         val descriptionTextView: TextView = exportLayout.findViewById(R.id.export_description)
 
         val playlistImagePath = File(filesDir, imagefile).absolutePath
+
+        // Glide로 플레이리스트 이미지를 로드
         Glide.with(this)
             .load(playlistImagePath)
             .into(playlistImageView)
 
+        // Glide로 배경 이미지에 블러 효과 적용
         Glide.with(this)
             .load(playlistImagePath)
+            .apply(RequestOptions.bitmapTransform(BlurTransformation(25, 3))) // 블러 강도 설정
             .into(background)
 
         playlistTitleTextView.text = playlistName
