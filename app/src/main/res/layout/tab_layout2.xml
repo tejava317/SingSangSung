@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Tab2Fragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Second Tab"
-        android:layout_gravity="center"
-        android:textSize="20dp" />
+    <!-- RecyclerView: Grid 형태로 아이템 표시 -->
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/tab2_playlist_element"/>
 
-</LinearLayout>
+    <!-- 버튼: 오른쪽 하단 고정 -->
+    <Button
+        android:id="@+id/add_playlist"
+        android:layout_width="155dp"
+        android:layout_height="37dp"
+        android:text="+    플리 추가하기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.875"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.93" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
