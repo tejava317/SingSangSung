@@ -19,20 +19,11 @@
         android:layout_marginTop="16dp">
 
         <Button
-            android:id="@+id/saveButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="저장"
-            android:layout_marginEnd="8dp"
-            android:backgroundTint="@android:color/holo_green_light"
-            android:textColor="@android:color/white" />
-
-        <Button
             android:id="@+id/closeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="닫기"
-            android:backgroundTint="@android:color/holo_red_light"
+            android:text="확인"
+                android:backgroundTint="@android:color/holo_green_light"
             android:textColor="@android:color/white" />
     </LinearLayout>
 </LinearLayout>

@@ -4,10 +4,13 @@ import SongsAdapter
 import android.app.AlertDialog
 import android.content.ContentValues
 import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.text.Layout
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -27,6 +30,9 @@ class Tab3CustomActivity : AppCompatActivity() {
 
     private lateinit var songsAdapter: SongsAdapter
     private lateinit var convertButton: Button
+
+    private lateinit var playlistName: String
+    private lateinit var imagefile: String
     private val selectedSongs = mutableListOf<Song>()
     private var descriptionText: String? = null
 
@@ -35,8 +41,8 @@ class Tab3CustomActivity : AppCompatActivity() {
         setContentView(R.layout.tab_layout3_custom)
 
         // Intent로 전달된 데이터 받기
-        val playlistName = intent.getStringExtra("playlist_name") ?: "플레이리스트 제목 없음"
-        val imagefile = intent.getStringExtra("playlist_image")
+        playlistName = intent.getStringExtra("playlist_name") ?: "플레이리스트 제목 없음"
+        imagefile = intent.getStringExtra("playlist_image") ?: "이미지 없음"
         // playlist 파일명이 playlistImage임
         val playlistImage = File(filesDir, imagefile)
         val playlistSongs = intent.getIntegerArrayListExtra("playlist_songs") ?: arrayListOf()
@@ -163,55 +169,82 @@ class Tab3CustomActivity : AppCompatActivity() {
 
     private fun setupConvertButton() {
         convertButton.setOnClickListener {
-            showConvertDialog()
+            exportImage()
         }
     }
 
-    private fun showConvertDialog() {
-        val dialogView = layoutInflater.inflate(R.layout.tab_layout3_convert, null)
+    private fun exportImage() {
+        val inflater = LayoutInflater.from(this)
+        val exportLayout = inflater.inflate(R.layout.export_image, null)
 
-        // AlertDialog 빌더 생성
-        val dialog = AlertDialog.Builder(this)
-            .setView(dialogView)
-            .create()
+        val background: ImageView = exportLayout.findViewById(R.id.export_background)
+        val playlistImageView: ImageView = exportLayout.findViewById(R.id.export_playlist_image)
+        val playlistTitleTextView: TextView = exportLayout.findViewById(R.id.export_playlist_title)
+        val descriptionTextView: TextView = exportLayout.findViewById(R.id.export_description)
 
-        // 다이얼로그 내부 요소 초기화
-        val imageView: ImageView = dialogView.findViewById(R.id.convertedImageView)
-        val saveButton: Button = dialogView.findViewById(R.id.saveButton)
-        val closeButton: Button = dialogView.findViewById(R.id.closeButton)
-
-        // 이미지 표시 (샘플 이미지 또는 변환된 이미지 설정)
+        val playlistImagePath = File(filesDir, imagefile).absolutePath
         Glide.with(this)
-            .load("https://via.placeholder.com/300.png") // 샘플 이미지 URL
-            .placeholder(R.drawable.placeholder)
-            .into(imageView)
+            .load(playlistImagePath)
+            .into(playlistImageView)
 
-        // "저장" 버튼 클릭 리스너
-        saveButton.setOnClickListener {
-            val drawable = imageView.drawable
-            if (drawable is BitmapDrawable) {
-                val bitmap = drawable.bitmap
-                saveImageToGallery(bitmap)
-                Toast.makeText(this, "이미지가 저장되었습니다.", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "이미지를 저장할 수 없습니다.", Toast.LENGTH_SHORT).show()
-            }
-            dialog.dismiss()
+        Glide.with(this)
+            .load(playlistImagePath)
+            .into(background)
+
+        playlistTitleTextView.text = playlistName
+        descriptionTextView.text = descriptionText
+
+        val songImageViews = listOf(
+            exportLayout.findViewById<ImageView>(R.id.export_songs_image_1),
+            exportLayout.findViewById<ImageView>(R.id.export_songs_image_2),
+            exportLayout.findViewById<ImageView>(R.id.export_songs_image_3)
+        )
+        val songTitleTextViews = listOf(
+            exportLayout.findViewById<TextView>(R.id.export_songs_title_1),
+            exportLayout.findViewById<TextView>(R.id.export_songs_title_2),
+            exportLayout.findViewById<TextView>(R.id.export_songs_title_3)
+        )
+        val songArtistDurationTextViews = listOf(
+            exportLayout.findViewById<TextView>(R.id.export_songs_artist_duration_1),
+            exportLayout.findViewById<TextView>(R.id.export_songs_artist_duration_2),
+            exportLayout.findViewById<TextView>(R.id.export_songs_artist_duration_3)
+        )
+
+        for (i in selectedSongs.indices) {
+            val song = selectedSongs[i]
+            Glide.with(this).load(song.imageUrl).into(songImageViews[i])
+            songTitleTextViews[i].text = song.title
+            songArtistDurationTextViews[i].text = "${song.artist} · ${song.duration}"
         }
 
-        // "닫기" 버튼 클릭 리스너
-        closeButton.setOnClickListener {
-            dialog.dismiss()
-        }
+        val bitmap = createBitmapFromLayout(exportLayout)
 
-        dialog.show()
+        saveImageToGallery(bitmap)
+
+        // 5. 다이얼로그에 저장된 이미지 불러오기
+        Thread.sleep(1000)
+        showConvertDialog(bitmap)
+    }
+
+    private fun createBitmapFromLayout(view: View): Bitmap {
+        view.measure(
+            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+        )
+        view.layout(0, 0, view.measuredWidth, view.measuredHeight)
+
+        val bitmap = Bitmap.createBitmap(view.measuredWidth, view.measuredHeight, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        view.draw(canvas)
+
+        return bitmap
     }
 
     private fun saveImageToGallery(bitmap: Bitmap) {
         val contentValues = ContentValues().apply {
             put(MediaStore.Images.Media.DISPLAY_NAME, "converted_image_${System.currentTimeMillis()}.jpg")
             put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
-            put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + "/MyAppImages")
+            put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + "/SingSangSung")
             put(MediaStore.Images.Media.IS_PENDING, 1)
         }
 
@@ -234,5 +267,24 @@ class Tab3CustomActivity : AppCompatActivity() {
                 outputStream?.close()
             }
         }
+    }
+
+    private fun showConvertDialog(bitmap: Bitmap) {
+        val dialogView = layoutInflater.inflate(R.layout.tab_layout3_convert, null)
+
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .create()
+
+        val imageView: ImageView = dialogView.findViewById(R.id.convertedImageView)
+        val closeButton: Button = dialogView.findViewById(R.id.closeButton)
+
+        imageView.setImageBitmap(bitmap)
+
+        closeButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 }
