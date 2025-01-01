@@ -8,7 +8,7 @@
     </style>
 
     <style name="splash_description">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:fontFamily">@font/notosans_semibold</item>
     </style>

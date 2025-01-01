@@ -1,55 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/splash_background"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ocean_blur" />
+            android:id="@+id/splash_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ocean_blur" />
 
     <LinearLayout
-        android:id="@+id/splash_frame"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="16dp">
+            android:id="@+id/splash_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="16dp">
 
         <ImageView
-            android:id="@+id/splash_image"
-            android:layout_width="match_parent"
-            android:layout_height="324dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/ocean"
-            android:elevation="4dp"
-            android:gravity="center"/>
+                android:id="@+id/splash_image"
+                android:layout_width="match_parent"
+                android:layout_height="324dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/ocean"
+                android:scaleType="fitCenter"
+                android:elevation="4dp" />
 
         <TextView
-            android:id="@+id/splash_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:text="추억이 그리울 땐, 싱숭생송"
-            android:textAppearance="@style/splash_title"
-                android:gravity="left" />
+                android:id="@+id/splash_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="5dp"
+                android:text="추억이 그리울 땐, 싱숭생송"
+                android:textAppearance="@style/splash_title"
+                android:gravity="start" />
 
         <TextView
-            android:id="@+id/splash_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginTop="5dp"
-            android:text="사진과 음악이 머무르는 곳"
-            android:textAppearance="@style/splash_description"
-            android:gravity="left" />
+                android:id="@+id/splash_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="5dp"
+                android:text="사진과 음악이 머무르는 곳"
+                android:textAppearance="@style/splash_description"
+                android:gravity="start" />
     </LinearLayout>
 
 </FrameLayout>
