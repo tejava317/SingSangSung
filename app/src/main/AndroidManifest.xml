@@ -32,6 +32,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".PlayList.PlaylistDetailActivityPage" />
         <activity
                 android:name=".MainActivity"
                 android:exported="true" />
