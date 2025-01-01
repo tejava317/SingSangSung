@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.compose.material3.Button
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.singsangsung.PlayList.PlaylistPreferenceManager
@@ -27,6 +29,18 @@ class Tab3BottomSheetFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         manager = PlaylistPreferenceManager(requireContext())
         setupRecyclerView(view)
+
+        // 'My Playlist로 이동' 버튼 클릭 이벤트 처리
+        val myPlaylistButton: Button = view.findViewById(R.id.myPlaylistButton)
+        myPlaylistButton.setOnClickListener {
+            navigateToTab2() // Tab 2로 전환하는 함수 호출
+        }
+
+        // '닫기' 버튼 클릭 이벤트 처리
+        val closeButton: Button = view.findViewById(R.id.bottomSheetCloseButton)
+        closeButton.setOnClickListener {
+            dismiss() // Bottom Sheet 닫기
+        }
     }
 
     // RecyclerView 설정
@@ -73,5 +87,11 @@ class Tab3BottomSheetFragment : BottomSheetDialogFragment() {
         }
         startActivity(intent)
         dismiss() // Bottom Sheet 닫기
+    }
+
+    private fun navigateToTab2() {
+        val mainActivity = activity as? MainActivity
+        mainActivity?.switchToTab(1) // Tab 2로 전환
+        dismiss()
     }
 }

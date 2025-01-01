@@ -51,4 +51,10 @@ class MainActivity : AppCompatActivity() {
         val prefs = context.getSharedPreferences("song_prefs", Context.MODE_PRIVATE)
         prefs.edit().clear().apply()
     }
+
+    fun switchToTab(tabIndex: Int) {
+        if (::viewPager.isInitialized && tabIndex in 0 until adapter.itemCount) {
+            viewPager.currentItem = tabIndex
+        }
+    }
 }
