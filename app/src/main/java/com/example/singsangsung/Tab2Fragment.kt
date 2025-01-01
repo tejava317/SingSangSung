@@ -19,7 +19,6 @@ import com.example.singsangsung.PlayList.PlaylistDetailActivityPage
 import com.example.singsangsung.PlayList.PlaylistPreferenceManager
 import com.example.singsangsung.model.PlayList.PlaylistDialogFragment
 
-
 class Tab2Fragment : Fragment() {
 
     private lateinit var prefs: PlaylistPreferenceManager
@@ -67,7 +66,7 @@ class Tab2Fragment : Fragment() {
         }
     }
 
-    // 📌 플레이리스트 불러오기
+    // 플레이리스트 불러오기
     private fun loadPlaylists() {
         playlists.clear()
         playlists.addAll(prefs.getPlaylists())
