@@ -7,6 +7,4 @@ data class Song(
     val duration:      String="",
     val imageUrl: String="",
     var isChecked: Boolean=false
-
-
 )

@@ -2,6 +2,7 @@ package com.example.singsangsung.PlayList
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ class PlaylistMusicFragment : DialogFragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: PlaylistMusicAdapter
     private lateinit var confirmButton: Button
+    private lateinit var songManager : SongPreferenceManager
 
     var onSongsSelected: ((List<Int>) -> Unit)? = null
 
@@ -40,6 +42,7 @@ class PlaylistMusicFragment : DialogFragment() {
         adapter = PlaylistMusicAdapter(musics)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        songManager= SongPreferenceManager(requireContext())
 
         confirmButton.setOnClickListener {
             val selectedIds = adapter.getSelectedIds()
