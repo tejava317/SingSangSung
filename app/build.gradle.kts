@@ -59,4 +59,7 @@ dependencies {
 
     // Image blur
     implementation("jp.wasabeef:glide-transformations:4.3.0")
+
+    // Splash screen
+    implementation("androidx.core:core-splashscreen:1.0.1")
 }
