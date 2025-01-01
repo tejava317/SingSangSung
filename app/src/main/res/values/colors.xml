@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="themeVivid">#E67110</color>
+
+    <color name="colorPrimary">#F7BD8C</color>
+    <color name="colorPrimaryVariant">#F3974B</color>
+    <color name="colorSecondary">#F7BD8C</color>
+    <color name="colorBackground">#FFFFFF</color>
 </resources>
