@@ -32,7 +32,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="설명 추가"
-            android:backgroundTint="@android:color/holo_blue_light"
             android:textColor="@android:color/white"
             android:padding="10dp" />
 
@@ -52,7 +51,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="노래 추가"
-            android:backgroundTint="@android:color/holo_blue_light"
             android:textColor="@android:color/white"
             android:padding="10dp" />
 
@@ -71,7 +69,6 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
         android:text="변환"
-        android:backgroundTint="@android:color/holo_green_light"
         android:textColor="@android:color/white"
         android:padding="10dp"
         android:visibility="gone" />
