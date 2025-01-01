@@ -4,6 +4,15 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <TextView
+        android:id="@+id/saveMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이미지가 갤러리에 저장되었습니다."
+        android:textAppearance="@style/save_message"
+        android:layout_marginBottom="10sp"
+        android:layout_gravity="center" />
+
     <ImageView
         android:id="@+id/convertedImageView"
         android:layout_width="match_parent"
