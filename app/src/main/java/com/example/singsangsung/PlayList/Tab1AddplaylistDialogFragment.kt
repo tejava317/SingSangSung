@@ -62,9 +62,6 @@ class Tab1AddplaylistDialogFragment : DialogFragment() {
     }
 
 
-    // 이미지 올릴때 갤러리에서 가져오기 팝업
-
-
     override fun onStart() {
         super.onStart()
         dialog?.window?.apply {
@@ -79,28 +76,13 @@ class Tab1AddplaylistDialogFragment : DialogFragment() {
     /**
      * 리스너
      */
-//    interface OnDismissListener {
-//        fun onDismiss()
-//    }
-//
     private var onDismissListener: OnDismissListener? = null
 //
-//    fun setOnDismissListener(listener: () -> Unit) {
-//        onDismissListener = listener
-//    }
-//
-//    override fun dismiss() {
-//        super.dismiss()
-//        onDismissListener?.onDismiss()
-//    }
-
+    fun setOnDismissListener(listener : OnDismissListener) {
+        onDismissListener = listener
+    }
     interface OnDismissListener {
         fun onDismiss()
-    }
-
-    // 📌 OnDismissListener 설정
-    fun setOnDismissListener(listener: OnDismissListener) {
-        onDismissListener = listener
     }
 
     override fun dismiss() {

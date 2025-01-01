@@ -138,6 +138,7 @@ class Tab1Fragment : Fragment() {
         return view
     }
 
+    // 가존 json을 sharedPreference로 이전
     private fun initializeSongsFromJson() {
         val isFirstRun = songManager.getSongs().isEmpty()
         if (isFirstRun) {
@@ -158,9 +159,11 @@ class Tab1Fragment : Fragment() {
     // 📌 DialogFragment 열기
     private fun openAddSongDialog() {
         val open = Tab1AddplaylistDialogFragment()
-//        open.setOnDismissListener {
-//            refreshSongList()
-//        }
+        open.setOnDismissListener(object : Tab1AddplaylistDialogFragment.OnDismissListener {
+            override fun onDismiss() {
+                refreshSongList()
+            }
+        })
         open.show(parentFragmentManager, "AddSongDialog")
     }
 
