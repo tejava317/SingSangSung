@@ -54,12 +54,21 @@ class Tab1AddplaylistDialogFragment : DialogFragment() {
                     )
 
                     songManager.addSong(newSong)
-
-                    Toast.makeText(requireContext(), "노래가 추가되었습니다!", Toast.LENGTH_SHORT).show()
                     dismiss()
                 } else {
-                    Toast.makeText(requireContext(), "입력한 노래를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
+                    val newSong = Song(
+                        id = 0, // ID는 SongPreferenceManager에서 자동으로 부여됨
+                        title = name,
+                        artist = artist,
+                        duration = "3:00", // Default
+                        imageUrl = "https://example.com/default_image.jpg"
+                    )
+
+                    songManager.addSong(newSong)
+
+                    dismiss()
                 }
+                Toast.makeText(requireContext(), "노래가 추가되었습니다.", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(requireContext(), "모든 필드를 입력해주세요.", Toast.LENGTH_SHORT).show()
             }

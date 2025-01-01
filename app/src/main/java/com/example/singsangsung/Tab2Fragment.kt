@@ -99,7 +99,7 @@ class Tab2Fragment : Fragment() {
 
         // 📌 RecyclerView 새로고침
         loadPlaylists()
-        Toast.makeText(requireContext(), "'${playlist.name}'이 삭제되었습니다.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "플레이리스트가 삭제되었습니다.", Toast.LENGTH_SHORT).show()
     }
     private fun openPlaylistDialog() {
         val dialog = PlaylistDialogFragment()

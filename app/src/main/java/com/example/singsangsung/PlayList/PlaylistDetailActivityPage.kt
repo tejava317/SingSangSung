@@ -202,7 +202,7 @@ private fun updatePlaylistInfo() {
             songsAdapter.notifyDataSetChanged()
 
             dialog.dismiss()
-            Toast.makeText(this, "노래가 성공적으로 추가되었습니다.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "노래가 추가되었습니다.", Toast.LENGTH_SHORT).show()
         }
 
         dialog.show()

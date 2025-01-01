@@ -64,7 +64,8 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="나의 노래리스트에 저장하기"
+            android:text="나의 노래 목록에 저장하기"
+            android:textStyle="bold"
             android:id="@+id/tab1_addSongBtn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
