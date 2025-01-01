@@ -33,10 +33,6 @@ class Tab1AddplaylistDialogFragment : DialogFragment() {
         addSongBtn = view.findViewById(R.id.tab1_addSongBtn)
         songManager = SongPreferenceManager(requireContext())
 
-        //manager = PlaylistPreferenceManager(requireContext())
-
-        // 이미지 선택 버튼 클릭 : 이미지 선택화면으로 갤러리이동
-
         addSongBtn.setOnClickListener {
             val name = songName.text.toString().trim()
             val artist = artistName.text.toString().trim()
@@ -57,8 +53,6 @@ class Tab1AddplaylistDialogFragment : DialogFragment() {
                 Toast.makeText(requireContext(), "모든 필드를 입력해주세요.", Toast.LENGTH_SHORT).show()
             }
         }
-
-
     }
 
 
@@ -77,7 +71,7 @@ class Tab1AddplaylistDialogFragment : DialogFragment() {
      * 리스너
      */
     private var onDismissListener: OnDismissListener? = null
-//
+
     fun setOnDismissListener(listener : OnDismissListener) {
         onDismissListener = listener
     }

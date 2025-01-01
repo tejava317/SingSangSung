@@ -15,7 +15,6 @@ import com.example.singsangsung.PlayList.GridRecyclerAdapter
 import com.example.singsangsung.PlayList.PlaylistPreferenceManager
 import com.example.singsangsung.model.PlayList.PlaylistDialogFragment
 
-
 class Tab2Fragment : Fragment() {
 
     private lateinit var prefs: PlaylistPreferenceManager
@@ -42,11 +41,8 @@ class Tab2Fragment : Fragment() {
         prefs = PlaylistPreferenceManager(requireContext())
         recyclerView = view.findViewById(R.id.recyclerView)
 
-
-
         setupRecyclerView()
         loadPlaylists()
-
 
         val addButton: Button = view.findViewById(R.id.add_playlist)
         addButton.setOnClickListener {
@@ -54,8 +50,7 @@ class Tab2Fragment : Fragment() {
         }
     }
 
-
-    // 📌 RecyclerView 초기화
+    // RecyclerView 초기화
     private fun setupRecyclerView() {
         gridAdapter = GridRecyclerAdapter(playlists)
         recyclerView.apply {
@@ -64,7 +59,7 @@ class Tab2Fragment : Fragment() {
         }
     }
 
-    // 📌 플레이리스트 불러오기
+    // 플레이리스트 불러오기
     private fun loadPlaylists() {
         playlists.clear()
         playlists.addAll(prefs.getPlaylists())

@@ -8,5 +8,4 @@ data class Song(
     val imageUrl: String="",
     var isChecked: Boolean=false
 
-
 )
