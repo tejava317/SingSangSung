@@ -9,6 +9,7 @@
             android:id="@+id/item_image"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:layout_marginBottom="5dp"
             android:scaleType="centerCrop"
             android:background="@android:color/darker_gray"/>
 
@@ -18,7 +19,6 @@
             android:layout_height="wrap_content"
             android:text="Item Name"
             android:gravity="center"
-            android:textSize="14sp"
-            android:textColor="@android:color/black"/>
+            android:textAppearance="@style/playlist_item_name" />
 
 </LinearLayout>
