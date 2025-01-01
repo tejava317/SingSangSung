@@ -86,7 +86,7 @@ class PlaylistDialogFragment : DialogFragment() {
             val musicDialog = PlaylistMusicFragment()
             musicDialog.onSongsSelected = { selectedIds ->
                 musicList = selectedIds
-                Toast.makeText(requireContext(), "선택된 음악 ID: $selectedIds", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(requireContext(), "선택된 음악 ID: $selectedIds", Toast.LENGTH_SHORT).show()
             }
             musicDialog.show(parentFragmentManager, "PlaylistMusicDialog")
         }

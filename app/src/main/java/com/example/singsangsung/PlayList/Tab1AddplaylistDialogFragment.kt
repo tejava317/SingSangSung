@@ -54,8 +54,6 @@ class Tab1AddplaylistDialogFragment : DialogFragment() {
                     )
 
                     songManager.addSong(newSong)
-
-                    Toast.makeText(requireContext(), "노래가 추가되었습니다!", Toast.LENGTH_SHORT).show()
                     dismiss()
                 } else {
                     val newSong = Song(
@@ -68,9 +66,9 @@ class Tab1AddplaylistDialogFragment : DialogFragment() {
 
                     songManager.addSong(newSong)
 
-                    Toast.makeText(requireContext(), "입력한 노래를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
                     dismiss()
                 }
+                Toast.makeText(requireContext(), "노래가 추가되었습니다.", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(requireContext(), "모든 필드를 입력해주세요.", Toast.LENGTH_SHORT).show()
             }

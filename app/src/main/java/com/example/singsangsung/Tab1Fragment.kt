@@ -49,16 +49,16 @@ class Tab1Fragment : Fragment() {
         if (isFirstRun) {
             songManager.initializeFromJson(requireContext())
             refreshSongList()
-            Toast.makeText(requireContext(), "JSON 데이터를 SharedPreferences로 이전했습니다.", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(requireContext(), "JSON 데이터를 SharedPreferences로 이전했습니다.", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(requireContext(), "이미 데이터가 이전되었습니다.", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(requireContext(), "이미 데이터가 이전되었습니다.", Toast.LENGTH_SHORT).show()
         }
     }
 
     // 📌 노래 추가 Dialog 호출
     private fun addOneSonglist() {
         openAddSongDialog()
-        Toast.makeText(requireContext(), "버튼 눌림", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(requireContext(), "버튼 눌림", Toast.LENGTH_SHORT).show()
     }
 
     // 📌 DialogFragment 열기

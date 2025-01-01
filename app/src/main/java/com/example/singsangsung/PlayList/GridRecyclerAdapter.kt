@@ -48,7 +48,7 @@ class GridRecyclerAdapter(
         holder.itemView.setOnClickListener{
             onItemClick(item)
             // requireContext()는 fragment에서만 사용할 수 있음, 아래는 adapter와 viewHolder에서 사용하는 방법
-            Toast.makeText(holder.itemView.context, "${item.name}이 선택되었습니다", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(holder.itemView.context, "${item.name}이 선택되었습니다", Toast.LENGTH_SHORT).show()
 
         }
 
