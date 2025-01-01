@@ -11,12 +11,17 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.singsangsung.R
 import com.example.singsangsung.model.Song
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
 class Tab1AddplaylistDialogFragment : DialogFragment() {
     private lateinit var songName: EditText
     private lateinit var artistName: EditText
     private lateinit var addSongBtn: Button
-    private lateinit var songManager : SongPreferenceManager
+    private lateinit var songManager: SongPreferenceManager
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,24 +42,63 @@ class Tab1AddplaylistDialogFragment : DialogFragment() {
             val name = songName.text.toString().trim()
             val artist = artistName.text.toString().trim()
             if (name.isNotEmpty() && artist.isNotEmpty()) {
-                val newSong = Song(
-                    id = 0, // ID는 SongPreferenceManager에서 자동으로 부여됨
-                    title = name,
-                    artist = artist,
-                    duration = "3:00", // 기본 값
-                    imageUrl = "https://example.com/default_image.jpg"
-                )
+                val songData = findSongInAssets(name, artist)
 
-                songManager.addSong(newSong)
+                if (songData != null) {
+                    val newSong = Song(
+                        id = 0, // ID는 SongPreferenceManager에서 자동으로 부여됨
+                        title = name,
+                        artist = artist,
+                        duration = songData.getString("duration"),
+                        imageUrl = songData.getString("image_url")
+                    )
 
-                Toast.makeText(requireContext(), "노래가 추가되었습니다!", Toast.LENGTH_SHORT).show()
-                dismiss()
+                    songManager.addSong(newSong)
+
+                    Toast.makeText(requireContext(), "노래가 추가되었습니다!", Toast.LENGTH_SHORT).show()
+                    dismiss()
+                } else {
+                    Toast.makeText(requireContext(), "입력한 노래를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
+                }
             } else {
                 Toast.makeText(requireContext(), "모든 필드를 입력해주세요.", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
+    private fun findSongInAssets(name: String, artist: String): JSONObject? {
+        val jsonString = loadJSONFromAsset("songsDB.json") ?: return null
+        val jsonArray = JSONArray(jsonString)
+
+        for (i in 0 until jsonArray.length()) {
+            val song = jsonArray.getJSONObject(i)
+            if (song.getString("title") == name && song.getString("artist") == artist) {
+                return song
+            }
+        }
+
+        return null
+    }
+
+    private fun loadJSONFromAsset(fileName: String): String? {
+        return try {
+            val inputStream = requireContext().assets.open(fileName)
+            val bufferedReader = BufferedReader(InputStreamReader(inputStream))
+            val stringBuilder = StringBuilder()
+
+            var line: String? = bufferedReader.readLine()
+            while (line != null) {
+                stringBuilder.append(line)
+                line = bufferedReader.readLine()
+            }
+
+            bufferedReader.close()
+            stringBuilder.toString()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+    }
 
     override fun onStart() {
         super.onStart()
@@ -72,9 +116,10 @@ class Tab1AddplaylistDialogFragment : DialogFragment() {
      */
     private var onDismissListener: OnDismissListener? = null
 
-    fun setOnDismissListener(listener : OnDismissListener) {
+    fun setOnDismissListener(listener: OnDismissListener) {
         onDismissListener = listener
     }
+
     interface OnDismissListener {
         fun onDismiss()
     }
