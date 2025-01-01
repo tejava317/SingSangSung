@@ -42,4 +42,8 @@ class MainActivity : AppCompatActivity() {
 //        val prefs = context.getSharedPreferences("playlist_prefs", Context.MODE_PRIVATE)
 //        prefs.edit().clear().apply()
 //    }
+        fun clearSharedPreferences(context: Context) {
+        val prefs = context.getSharedPreferences("song_prefs", Context.MODE_PRIVATE)
+        prefs.edit().clear().apply()
+    }
 }
