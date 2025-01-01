@@ -36,9 +36,9 @@ class MainActivity : AppCompatActivity() {
         // TabLayout과 ViewPager2 연결
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = when (position) {
-                0 -> "Songs.zip"
-                1 -> "My playlist"
-                2 -> "싱숭생송"
+                0 -> "Songs"
+                1 -> "Playlist"
+                2 -> "Export"
                 else -> "Default Tab"
             }
         }.attach()
