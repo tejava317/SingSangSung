@@ -19,13 +19,23 @@
             android:gravity="center"
             android:padding="16dp">
 
+        <TextView
+                android:id="@+id/splash_watermark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:text="Playlist"
+                android:textAppearance="@style/export_watermark"
+                android:gravity="end" />
+
         <ImageView
                 android:id="@+id/splash_image"
                 android:layout_width="match_parent"
                 android:layout_height="324dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:src="@drawable/ocean"
                 android:scaleType="fitCenter"
