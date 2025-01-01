@@ -95,13 +95,12 @@ class PlaylistDialogFragment : DialogFragment() {
 
     // 이미지 올릴때 갤러리에서 가져오기 팝업
     private fun showImagePickerDialog() {
-        val options = arrayOf("갤러리에서 선택", "사진 촬영")
+        val options = arrayOf("갤러리에서 선택")
         android.app.AlertDialog.Builder(requireContext())
             .setTitle("이미지 선택")
             .setItems(options) { _, which ->
                 when (which) {
                     0 -> openGallery()
-                    1 -> openCamera()
                 }
             }.show()
     }
@@ -109,11 +108,6 @@ class PlaylistDialogFragment : DialogFragment() {
     private fun openGallery() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(intent, REQUEST_GALLERY)
-    }
-
-    private fun openCamera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(intent, REQUEST_CAMERA)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
